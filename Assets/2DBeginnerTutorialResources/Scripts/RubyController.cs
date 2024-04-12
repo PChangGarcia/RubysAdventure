@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RubyController : MonoBehaviour
 {
@@ -8,7 +9,12 @@ public class RubyController : MonoBehaviour
 
     public int maxHealth = 5;
 
+    public int score;
+
     public GameObject projectilePrefab;
+    public GameObject scoreText;
+    public GameObject gameOverText;
+    public GameObject YouWinText;
 
     public AudioClip throwSound;
     public AudioClip hitSound;
@@ -38,6 +44,9 @@ public class RubyController : MonoBehaviour
         currentHealth = maxHealth;
 
         audioSource = GetComponent<AudioSource>();
+
+        gameOverText.SetActive(false);
+        YouWinText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -81,6 +90,17 @@ public class RubyController : MonoBehaviour
                     character.DisplayDialog();
                 }
             }
+        }
+
+        if (currentHealth == 0)
+        {
+             gameOverText.SetActive(true);
+             speed = 0;
+
+             if (Input.GetKeyDown(KeyCode.R))
+             {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+             }
         }
     }
 
@@ -126,5 +146,10 @@ public class RubyController : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
+    }
+
+    public void ChangeScore(int scoreAmount)
+    {
+        
     }
 }
