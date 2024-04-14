@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     Animator animator;
 
     private RubyController rubyController;
-
+    private BotTracker tracker;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +43,17 @@ public class EnemyController : MonoBehaviour
             print ("Cannot find GameController Script!");
 
             }
+
+        GameObject botTrackerObject = GameObject.FindWithTag("GameController");
+
+        if (botTrackerObject != null)
+        {
+
+            tracker = botTrackerObject.GetComponent<BotTracker>(); //and this line of code finds the rubyController and then stores it in a variable
+
+            print("Found the Bot Tracker Script!");
+
+        }
     }
 
     void Update()
@@ -107,5 +118,7 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
 
         smokeEffect.Stop();
+
+        tracker.ChangeNum(1);
     }
 }

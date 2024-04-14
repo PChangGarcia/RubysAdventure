@@ -103,10 +103,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   maxHealth: 5
+  score: 0
   projectilePrefab: {fileID: 250902209552088170, guid: ac0d9a709b2b887438ae1939540daa36, type: 3}
+  scoreText: {fileID: 0}
+  gameOverText: {fileID: 0}
+  YouWinText: {fileID: 0}
   throwSound: {fileID: 8300000, guid: b2edfd40873655249ba0e01a5cf705be, type: 3}
   hitSound: {fileID: 8300000, guid: 9b1bb1f450b7d444fa4a8019d13519a7, type: 3}
   timeInvincible: 2
+  damageParticles: {fileID: 3164590413534729862, guid: 6043bfc60f8ff804fb5d1975b1d2d32a, type: 3}
+  healthPickup: {fileID: 3164590413534729862, guid: 53f3beeef4af29c46bb5c4b14f4926f0, type: 3}
 --- !u!61 &6443536996871673948
 BoxCollider2D:
   m_ObjectHideFlags: 0

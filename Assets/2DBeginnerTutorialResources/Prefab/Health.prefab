@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3164590413534729862}
   - component: {fileID: 3164590413534729861}
   m_Layer: 0
-  m_Name: Damage
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1540,8 +1540,8 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 1221820979, guid: bb5bb2f184426a64cac53faa220820f5, type: 3}
-    - sprite: {fileID: -1778974072, guid: bb5bb2f184426a64cac53faa220820f5, type: 3}
+    - sprite: {fileID: -140048040, guid: bb5bb2f184426a64cac53faa220820f5, type: 3}
+    - sprite: {fileID: 318322778, guid: bb5bb2f184426a64cac53faa220820f5, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

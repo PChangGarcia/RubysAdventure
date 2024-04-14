@@ -35,6 +35,9 @@ public class RubyController : MonoBehaviour
 
     AudioSource audioSource;
 
+    public ParticleSystem damageParticles;
+    public ParticleSystem healthPickup;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -123,7 +126,14 @@ public class RubyController : MonoBehaviour
             isInvincible = true;
             invincibleTimer = timeInvincible;
 
+            Instantiate(damageParticles, transform.position, transform.rotation);
+
             PlaySound(hitSound);
+        }
+
+        else if (amount > 0)
+        {
+            Instantiate(healthPickup, transform.position, transform.rotation);
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
@@ -148,8 +158,4 @@ public class RubyController : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
 
-    public void ChangeScore(int scoreAmount)
-    {
-        
-    }
 }
