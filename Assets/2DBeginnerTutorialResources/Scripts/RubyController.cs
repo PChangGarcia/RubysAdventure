@@ -40,6 +40,8 @@ public class RubyController : MonoBehaviour
     public ParticleSystem damageParticles;
     public ParticleSystem healthPickup;
 
+    private BotTracker tracker;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,13 @@ public class RubyController : MonoBehaviour
 
         gameOverText.SetActive(false);
         YouWinText.SetActive(false);
+
+        GameObject botTrackerObject = GameObject.FindWithTag("GameController");
+
+        if (botTrackerObject != null)
+        {
+            tracker = botTrackerObject.GetComponent<BotTracker>();
+        }
     }
 
     // Update is called once per frame
@@ -102,7 +111,7 @@ public class RubyController : MonoBehaviour
              gameOverText.SetActive(true);
              speed = 0;
 
-             PlaySound(loseSound);
+            tracker.PlaySound(loseSound);
 
              if (Input.GetKeyDown(KeyCode.R))
              {
@@ -160,6 +169,11 @@ public class RubyController : MonoBehaviour
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
+    }
+
+    public void ChangeSpeed()
+    {
+        speed = 0;
     }
 
 }

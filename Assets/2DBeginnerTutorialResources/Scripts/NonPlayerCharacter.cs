@@ -8,10 +8,22 @@ public class NonPlayerCharacter : MonoBehaviour
     public GameObject dialogBox;
     float timerDisplay;
 
+    public AudioClip voiceClip;
+
+    private RubyController rubyController;
+
     void Start()
     {
         dialogBox.SetActive(false);
         timerDisplay = -1.0f;
+
+        GameObject rubyControllerObject = GameObject.FindWithTag("RubyController");
+        if (rubyControllerObject != null)
+        {
+
+            rubyController = rubyControllerObject.GetComponent<RubyController>();
+
+        }
     }
 
     void Update()
@@ -30,5 +42,6 @@ public class NonPlayerCharacter : MonoBehaviour
     {
         timerDisplay = displayTime;
         dialogBox.SetActive(true);
+        rubyController.PlaySound(voiceClip);
     }
 }

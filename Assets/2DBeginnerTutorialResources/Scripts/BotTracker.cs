@@ -7,28 +7,41 @@ using UnityEngine.SceneManagement;
 public class BotTracker : MonoBehaviour
 {
     public Text botNumber;
+    public Text rockNumber;
     public int numBot = 0;
+    public int numRock = 0;
 
     public GameObject winText;
-    public AudioClip winSound;
+    
+    private RubyController rubyController;
 
     AudioSource audioSource;
 
     private void Start()
     {
-        botNumber.text = "Fixed Robots: 0";
+        GameObject rubyControllerObject = GameObject.FindWithTag("RubyController");
+
+        if (rubyControllerObject != null)
+        {
+
+            rubyController = rubyControllerObject.GetComponent<RubyController>(); 
+
+        }
 
         audioSource = GetComponent<AudioSource>();
+        botNumber.text = "Fixed Robots: 0";
+        rockNumber.text = "Rocks Destroyed: 0";
+        
     }
 
     private void Update()
     {
         botNumber.text = "Fixed Robots: " + numBot;
+        rockNumber.text = "Rocks Destroyed: " + numRock;
 
-        if (numBot == 4)
+        if (numBot == 4 && numRock == 2)
         {
             GameWin();
-            
         }
     }
 
@@ -41,9 +54,9 @@ public class BotTracker : MonoBehaviour
     {
             winText.SetActive(true);
 
-            PlaySound(winSound);
+            
 
-            Time.timeScale = 0;
+        rubyController.ChangeSpeed();
 
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -51,9 +64,13 @@ public class BotTracker : MonoBehaviour
             }
     }
 
+   public void RockBroke()
+    {
+        numRock += 1;
+    }
+
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
     }
-    
 }
