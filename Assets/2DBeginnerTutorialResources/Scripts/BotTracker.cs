@@ -10,9 +10,15 @@ public class BotTracker : MonoBehaviour
     public int numBot = 0;
 
     public GameObject winText;
+    public AudioClip winSound;
+
+    AudioSource audioSource;
+
     private void Start()
     {
         botNumber.text = "Fixed Robots: 0";
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -22,6 +28,7 @@ public class BotTracker : MonoBehaviour
         if (numBot == 4)
         {
             GameWin();
+            
         }
     }
 
@@ -34,12 +41,19 @@ public class BotTracker : MonoBehaviour
     {
             winText.SetActive(true);
 
+            PlaySound(winSound);
+
             Time.timeScale = 0;
 
             if (Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
     
 }

@@ -18,6 +18,8 @@ public class RubyController : MonoBehaviour
 
     public AudioClip throwSound;
     public AudioClip hitSound;
+    public AudioClip loseSound;
+    public AudioClip winSound;
 
     public int health { get { return currentHealth; } }
     int currentHealth;
@@ -99,6 +101,8 @@ public class RubyController : MonoBehaviour
         {
              gameOverText.SetActive(true);
              speed = 0;
+
+             PlaySound(loseSound);
 
              if (Input.GetKeyDown(KeyCode.R))
              {
