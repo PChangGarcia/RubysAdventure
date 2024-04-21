@@ -16,6 +16,7 @@ public class BotTracker : MonoBehaviour
     private RubyController rubyController;
 
     AudioSource audioSource;
+    public AudioClip winSound;
 
     private void Start()
     {
@@ -54,7 +55,7 @@ public class BotTracker : MonoBehaviour
     {
             winText.SetActive(true);
 
-            
+            PlaySound(winSound);
 
         rubyController.ChangeSpeed();
 

@@ -16,7 +16,7 @@ public class HealthSpeed : MonoBehaviour
             {
                 controller.ChangeHealth(1);
                 Destroy(gameObject);
-                //speed = 6; (can't work, won't exist in current context.)
+                controller.speed = 6; 
 
                 controller.PlaySound(collectedClip);
             }
